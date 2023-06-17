@@ -1,0 +1,81 @@
+<!-- <div class="card">
+    <div class="card-header bg-success text-white">Candidate List    
+    </div>
+
+    <div class="card-body">
+        <table class="table table-bordered table-striped table-hover">
+         <thead> 
+            <tr>
+                <th>Sr No.</th>
+                <th>Name</th>
+                <th>Contact No.</th>
+                <th>Email</th>
+                <th>City</th>
+            </tr>
+         </thead>
+         <tbody>
+            <tr></tr>
+         </tbody>
+
+
+
+
+
+        </table>
+    </div>
+
+</div> -->
+<div class="content" role="main">
+<div  class="mat-elevation-z8">
+
+<mat-form-field>
+<mat-label>Filter</mat-label>
+<input matInput placeholder="Filter" (keyup)="filterChange($event)">
+</mat-form-field>
+
+  <table mat-table matSort [dataSource]="dataSource">
+
+   
+    <ng-container matColumnDef="no">
+      <th mat-header-cell  *matHeaderCellDef > No. </th>
+      <td mat-cell *matCellDef="let element; let  i=index"> {{i}} </td>
+    </ng-container>
+  
+
+    <ng-container matColumnDef="firstName">
+      <th mat-header-cell mat-sort-header *matHeaderCellDef >Name </th>
+      <td mat-cell *matCellDef="let element"> {{element?.firstName}} </td>
+    </ng-container>
+  
+ 
+    <ng-container matColumnDef="email">
+      <th  mat-header-cell  mat-sort-header *matHeaderCellDef> Email </th>
+      <td mat-cell *matCellDef="let element"> {{element?.email}} </td>
+    </ng-container>
+  
+ 
+    <ng-container matColumnDef="age">
+      <th mat-header-cell mat-sort-header *matHeaderCellDef> Age </th>
+      <td mat-cell *matCellDef="let element"> {{element?.age}} </td>
+    </ng-container>
+
+    <ng-container matColumnDef="contactNumber">
+      <th mat-header-cell  *matHeaderCellDef> contactNumber </th>
+      <td mat-cell *matCellDef="let element"> {{element?.contactNumber}} </td>
+    </ng-container>
+
+    <ng-container matColumnDef="action">
+      <th mat-header-cell *matHeaderCellDef> Action </th>
+      <td mat-cell *matCellDef="let element"> 
+        <button (click)="getEditfdetails(element)" mat-raised-button color="primary">Edit</button>
+        <button mat-raised-button color="warn" class="Delete">Delete</button></td>
+    </ng-container>
+  
+    <tr mat-header-row *matHeaderRowDef="displayedColumns"></tr>
+    <tr (click)="getRow(row)" mat-row *matRowDef="let row; columns: displayedColumns;"></tr>
+  </table>
+
+  <mat-paginator [pageSizeOptions]="[5,10,20,50]" showFirstLastButtons></mat-paginator>
+  
+</div>
+</div>
